@@ -117,6 +117,7 @@ class acf_field_read_only extends acf_field {
 			'choices' => array(
 				'text'	  => 'Text',
 				'link'	  => 'Link',
+				'download' => 'Download',
 				'boolean' => 'Boolean (True/False)',
 				'pre'     => 'Preformatted',
 				'img'     => 'Image',
@@ -165,6 +166,10 @@ class acf_field_read_only extends acf_field {
 				<span><?php echo esc_attr($field['value']) ?></span>
 			<?php elseif ($field['display_type'] == 'link'): ?>
 				<a href="<?php echo esc_attr($field['value']) ?>" target="_blank"><?php echo esc_attr($field['label']) ?></a>
+			<?php elseif ($field['display_type'] == 'download'): ?>
+				<?php if($field['value']): ?>
+					<a href="<?php echo esc_attr($field['value']) ?>" download="<?php echo esc_attr(basename($field['value'])) ?>">Download</a>
+				<?php endif; ?>
 			<?php elseif ($field['display_type'] == 'boolean'): ?>
 				<span>
 					<?php if ( $field['value'] == true ): ?>
